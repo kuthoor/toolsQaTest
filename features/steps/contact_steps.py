@@ -1,3 +1,6 @@
+"""
+This module implements test steps that are used in the contact.feature file.
+"""
 from selenium.webdriver.common.by import By
 from ..pages.contact_us import ContactUsLocator
 
@@ -46,6 +49,7 @@ def step_impl(context, company):
 @step('I should not be able to submit')
 def step_impl(context):
     context.contact_page.submit()
+    #Check if we see validation errors per field
     context.contact_page.error_on_submit(ContactUsLocator.VALIDATION_GENERIC_MESSAGE,
                                          *ContactUsLocator.VALIDATION_PHONE_ERROR)
     context.contact_page.error_on_submit(ContactUsLocator.VALIDATION_GENERIC_MESSAGE,
@@ -54,12 +58,14 @@ def step_impl(context):
                                          *ContactUsLocator.VALIDATION_COUNTRY_ERROR)
     context.contact_page.error_on_submit(ContactUsLocator.VALIDATION_GENERIC_MESSAGE,
                                          *ContactUsLocator.VALIDATION_COMPANY_ERROR)
+    #Check if the page has overall validation error
     context.contact_page.error_on_submit(ContactUsLocator.VALIDATION_ERROR_MESSAGE,
                                          *ContactUsLocator.SUCCESS_ERROR)
 
 @step('Email validation should fail')
 def step_impl(context):
     context.contact_page.submit()
+    # Check if we see validation errors per field
     context.contact_page.error_on_submit(ContactUsLocator.VALIDATION_GENERIC_MESSAGE,
                                          *ContactUsLocator.VALIDATION_PHONE_ERROR)
     context.contact_page.error_on_submit(ContactUsLocator.VALIDATION_GENERIC_MESSAGE,
@@ -68,14 +74,17 @@ def step_impl(context):
                                          *ContactUsLocator.VALIDATION_COUNTRY_ERROR)
     context.contact_page.error_on_submit(ContactUsLocator.VALIDATION_GENERIC_MESSAGE,
                                          *ContactUsLocator.VALIDATION_COMPANY_ERROR)
+    # Check if email vaildation error is shown
     context.contact_page.error_on_submit(ContactUsLocator.VALIDATION_EMAIL_ERROR_MESSAGE,
                                          *ContactUsLocator.VALIDATION_EMAIL_ERROR)
+    # Check if the page has overall validation error
     context.contact_page.error_on_submit(ContactUsLocator.VALIDATION_ERROR_MESSAGE,
                                          *ContactUsLocator.SUCCESS_ERROR)
 
 @step('Phone validation should fail')
 def step_impl(context):
     context.contact_page.submit()
+    # Check if we see validation errors per field
     context.contact_page.error_on_submit(ContactUsLocator.VALIDATION_GENERIC_MESSAGE,
                                          *ContactUsLocator.VALIDATION_PHONE_ERROR)
     context.contact_page.error_on_submit(ContactUsLocator.VALIDATION_GENERIC_MESSAGE,
@@ -84,6 +93,7 @@ def step_impl(context):
                                          *ContactUsLocator.VALIDATION_COUNTRY_ERROR)
     context.contact_page.error_on_submit(ContactUsLocator.VALIDATION_GENERIC_MESSAGE,
                                          *ContactUsLocator.VALIDATION_COMPANY_ERROR)
+    # Check if the page has overall validation error
     context.contact_page.error_on_submit(ContactUsLocator.VALIDATION_ERROR_MESSAGE,
                                          *ContactUsLocator.SUCCESS_ERROR)
 
@@ -91,5 +101,6 @@ def step_impl(context):
 @step('I should be able to submit without error')
 def step_impl(context):
     context.contact_page.submit()
+    # Check if the page has success message
     context.contact_page.error_on_submit(ContactUsLocator.SUBMIT_SUCCESS_MESSAGE,
                                          *ContactUsLocator.SUCCESS_ERROR)
