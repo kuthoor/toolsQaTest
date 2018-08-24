@@ -19,13 +19,19 @@ Clone this repo to your local directory
 To run the test
  1. change directory to the root of this test i.e toolsQaTest
  2. execute command behave.exe and you should see an output as follows
+     
      Failing scenarios:
+     
      features/contact.feature:27  Phone validation
 
      0 features passed, 1 failed, 0 skipped
+     
      4 scenarios passed, 1 failed, 0 skipped
+     
      34 steps passed, 1 failed, 1 skipped, 0 undefined
+     
      Took 1m6.796s
+     
 
 This test suite has 5 test cases
  1. Fill contact form (checks if user is able to navigate to contact form and fill in the details)
