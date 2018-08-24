@@ -34,6 +34,12 @@ This test suite has 5 test cases
  4. Phone validation (form should validate phone number format)
  5. Submit without error (user should be able to submit the form when all the details are filles in)
 
+Further test scenarios:
+ - Validate form by filling it partially and omitting fields.
+ - Check if the submit form was successfully received at other end with all the information
+ - Check if the fields are cleared once submitted
+ - Check if user is unable to submit same information multiple times by pressing the Send button
+
 Test result:
  All except Phone validation test cases failed, this is a bug where the form is not validating the phone number.
  Another observation is that user is able to submit the form even if the msaage text box is empty.
