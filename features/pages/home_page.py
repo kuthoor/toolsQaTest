@@ -1,0 +1,33 @@
+from nose.tools import assert_equal
+from selenium.webdriver.common.by import By
+from browser import Browser
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+
+class HomePageLocator(object):
+
+    TITLE = (By.XPATH, 'html/head/title')
+    HOME_PAGE_TITLE = 'QA Automation Tools Tutorial'
+    ABOUT = (By.LINK_TEXT, 'ABOUT')
+    CONTACT_US = (By.LINK_TEXT, 'Contact Us')
+    CONTACT_TITLE = 'Contact US ToolsQA | Lakshay Sharma'
+    SEND_BUTTON = (By.XPATH, '//*[@id="wpcf7-f24985-p13-o1"]/form/p[8]/input')
+
+class HomePage(Browser):
+
+    def click_element(self, *locator):
+        self.driver.find_element(*locator).click()
+
+    def navigate(self, address):
+        self.driver.get(address)
+        assert_equal(self.get_page_title(), HomePageLocator.HOME_PAGE_TITLE)
+
+    def get_page_title(self):
+        return self.driver.title
+
+    def go_to_contact(self):
+        self.click_element(*HomePageLocator.ABOUT)
+        self.click_element(*HomePageLocator.CONTACT_US)
+        element = WebDriverWait(self.driver, 10).until(
+            EC.presence_of_element_located(HomePageLocator.SEND_BUTTON))
+        assert_equal(self.get_page_title(), HomePageLocator.CONTACT_TITLE)
