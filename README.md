@@ -4,10 +4,10 @@ BDD tests are developed in Python and works on Chrome.
 
 Software required.
  - Python (2.7.14)
- The following modules should be installed using pip
- - nose (1.3.7) (pip install nose==1.3.7)
- - behave (1.2.6) (pip install behave==1.2.6)
- - selenium (3.14.0) pip install selenium==3.14.0)
+ - The following modules should be installed using pip
+   - nose (1.3.7) (pip install nose==1.3.7)
+   - behave (1.2.6) (pip install behave==1.2.6)
+   - selenium (3.14.0) pip install selenium==3.14.0)
  - Install Chrome  browser
  - Download selenium chrome driver (https://chromedriver.storage.googleapis.com/index.html?path=2.41/)
    Once downloaded and extracted, go to browser.py file and modify this line (number 7) and
